@@ -1,0 +1,38 @@
+{
+  "name": "node-api-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dtonys/node-api-boilerplate.git",
+  "author": "dtonys@gmail.com <dtonys@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development babel-watch ./src/server.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "start": "cross-env NODE_ENV=production forever start --uid node-api --append ./build/server.js",
+    "lint-js": "eslint -c ./.eslintrc.js ./src"
+  },
+  "dependencies": {
+    "babel-loader": "^7.1.2",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "cross-env": "^5.1.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "json-loader": "^0.5.7",
+    "webpack": "^3.10.0",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-watch": "^2.0.7",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-import-resolver-node": "^0.3.1",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        ["babel-preset-env", {
+          "targets": {
+            "node": "current"
+          }
+        }]
+      ],
+    },
+    "production": {
+      "presets": [
+        ["babel-preset-env", {
+          "targets": {
+            "node": "current"
+          },
+          "modules": false,
+        }]
+      ]
+    }
+  },
+  "presets": [
+    "babel-preset-stage-1"
+  ],
+  "plugins": [
+    [ "babel-plugin-module-resolver",
+      {
+        "root": [
+          "./src"
+        ]
+      }
+    ]
+  ],
+}
