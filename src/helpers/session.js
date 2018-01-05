@@ -9,7 +9,7 @@ import User from 'models/user';
 
 
 let encryptor = null;
-// NOTE: Due to the startup process with `babel-watch` `process.env.ENCRYPTION_SECRET` is not loaded at startup,
+// NOTE: Due to the startup process with `babel-watch`, `process.env.ENCRYPTION_SECRET` is not loaded at startup,
 // so the encryptor must be invoked later
 export function createSessionEncryptor() {
   encryptor = createEncryptor( process.env.ENCRYPTION_SECRET );

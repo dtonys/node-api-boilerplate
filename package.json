@@ -11,7 +11,7 @@
     "start": "cross-env NODE_ENV=production forever start --uid node-api --append ./build/server.js",
     "stop": "forever stop node-api",
     "lint-js": "eslint -c ./.eslintrc.js ./src",
-    "console": "cross-env NODE_ENV=production babel-node ./src/console.js"
+    "console": "babel-node ./src/console.js"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
