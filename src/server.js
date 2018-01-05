@@ -1,9 +1,8 @@
 import path from 'path';
-
 import dotenv from 'dotenv';
-// import cors from 'cors';
-// import bodyParser from 'body-parser';
-// import cookieParser from 'cookie-parser';
+import {
+  createSessionEncryptor,
+} from 'helpers/session';
 
 import {
   createExpressApp,
@@ -19,17 +18,13 @@ async function bootstrap() {
   dotenv.load({
     path: path.resolve(__dirname, '../.env'),
   });
-
-  // setup mailer
-  // mailer.initialize();
+  createSessionEncryptor();
 
   // setup mongodb
   await setupMongoose( process.env.MONGODB_DATABASE_NAME );
 
   // setup express
   const expressApp = createExpressApp();
-
-  // start server
   await startExpressServer(expressApp);
 }
 

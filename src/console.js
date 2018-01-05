@@ -1,1 +1,8 @@
-console.log('console.js TODO'); // eslint-disable-line no-console
+// import repl from 'repl';
+
+
+// async function bootstrap() {
+//   await mongoHelpers.setupMongoose('mapplaces');
+//   mailer.initialize();
+//   startRepl();
+// }
