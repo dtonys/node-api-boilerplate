@@ -13,6 +13,9 @@ const adminOnly = requireRoles([ 'admin' ]);
 const router = new Router();
 
 // Health check
+router.get('/', (req, res) => {
+  res.send('ok');
+});
 router.get('/api/health-check', (req, res) => {
   res.send('ok');
 });
