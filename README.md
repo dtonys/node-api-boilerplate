@@ -13,8 +13,8 @@ A modern starting point for nodeJS API backends.
 - Health Check
 
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Method | Url           | Params|
+| ------ | ------------- | ----- |
+|        | right-aligned | $1600 |
+|        | centered      |   $12 |
+|        | are neat      |    $1 |
