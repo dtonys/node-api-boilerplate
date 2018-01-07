@@ -14,7 +14,6 @@ A modern starting point for nodeJS API backends.
 
 ## API
 
-| **CRUD** | --- | --- | --- |
 | Method | Url            | Params| Notes |
 | ------ | -------------- | ----- | ----- |
 | POST   | /api/users     | email, password_hash, roles | Create a new user |
