@@ -12,7 +12,7 @@ A modern starting point for nodeJS API backends.
 - API testing with Jest, all API endpoints covered
 - Health Check
 
-
+## API
 | Method | Url            | Params|
 | ------ | -------------- | ----- |
 | POST   | /api/users     | email, password_hash, roles |
@@ -20,6 +20,10 @@ A modern starting point for nodeJS API backends.
 | GET    | /api/users/:id | |
 | GET    | /api/users     | |
 | DELETE | /api/users/:id | |
-
-
-
+|        |                |       |
+| POST   | /api/signup    | email, password |
+| POST   | /api/login     | email, password |
+| GET    | /api/logout    | |
+| GET    | /api/session   | |
+| GET    | /api/member/users | |
+| GET    | /api/admin/users | |
