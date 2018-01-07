@@ -13,8 +13,13 @@ A modern starting point for nodeJS API backends.
 - Health Check
 
 
-| Method | Url           | Params|
-| ------ | ------------- | ----- |
-|        | right-aligned | $1600 |
-|        | centered      |   $12 |
-|        | are neat      |    $1 |
+| Method | Url            | Params|
+| ------ | -------------- | ----- |
+| POST   | /api/users     | email, password_hash, roles |
+| PATCH  | /api/users/:id | email, password_hash, roles |
+| GET    | /api/users/:id | |
+| GET    | /api/users     | |
+| DELETE | /api/users/:id | |
+
+
+
