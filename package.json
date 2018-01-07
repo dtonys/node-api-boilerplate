@@ -11,10 +11,13 @@
     "start": "cross-env NODE_ENV=production forever start --uid node-api --append ./build/server.js",
     "stop": "forever stop node-api",
     "lint-js": "eslint -c ./.eslintrc.js ./src",
-    "console": "babel-node ./src/console.js"
+    "console": "babel-node ./src/console.js",
+    "test": "cross-env NODE_ENV=development jest --config ./jest.config.js",
+    "test:watch": "cross-env NODE_ENV=development jest --config ./jest.config.js --watch"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "babel-jest": "^22.0.4",
     "babel-loader": "^7.1.2",
     "babel-plugin-module-resolver": "^3.0.0",
     "babel-preset-env": "^1.6.1",
@@ -28,6 +31,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "forever": "^0.15.3",
+    "get-port": "^3.2.0",
     "helmet": "^3.9.0",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.4",
@@ -43,6 +47,8 @@
     "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-node": "^0.3.1",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint-plugin-import": "^2.8.0",
+    "jest": "^22.0.4",
+    "superagent": "^3.8.2"
   }
 }
