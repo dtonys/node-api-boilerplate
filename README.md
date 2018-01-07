@@ -13,17 +13,17 @@ A modern starting point for nodeJS API backends.
 - Health Check
 
 ## API
-| Method | Url            | Params|
-| ------ | -------------- | ----- |
-| POST   | /api/users     | email, password_hash, roles |
-| PATCH  | /api/users/:id | email, password_hash, roles |
-| GET    | /api/users/:id | |
-| GET    | /api/users     | |
+| Method | Url            | Params| Notes |
+| ------ | -------------- | ----- | ----- |
+| POST   | /api/users     | email, password_hash, roles | Get list of users |
+| PATCH  | /api/users/:id | email, password_hash, roles | Update user |
+| GET    | /api/users/:id | | Get user |
+| GET    | /api/users     | | Get list of users |
 | DELETE | /api/users/:id | |
-|        |                |       |
+|        |                |       |       |
 | POST   | /api/signup    | email, password |
 | POST   | /api/login     | email, password |
-| GET    | /api/logout    | |
-| GET    | /api/session   | |
-| GET    | /api/member/users | |
-| GET    | /api/admin/users | |
+| GET    | /api/logout    | | |
+| GET    | /api/session   | | Get current session info |
+| GET    | /api/member/users | | Get list of users, logged in protected |
+| GET    | /api/admin/users | | Get list of users, admin protected |
