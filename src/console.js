@@ -19,7 +19,7 @@ function requireUncached(module) {
 
 // Reload the repl to allow code changes to propagate, without killing the process.
 async function reloadRepl( replServer ) {
-  console.log('Reloading...');  // eslint-disable-line no-console
+  console.log('Reloading...'); // eslint-disable-line no-console
 
   await replServer.context.mongoose.disconnect();
   await setupMongoose( process.env.MONGODB_DATABASE_NAME );
@@ -30,7 +30,7 @@ async function reloadRepl( replServer ) {
     replServer.context[modelName] = replServer.context.db.models[modelName];
   });
 
-  console.log('Done');  // eslint-disable-line no-console
+  console.log('Done'); // eslint-disable-line no-console
 }
 
 async function bootstrap() {
