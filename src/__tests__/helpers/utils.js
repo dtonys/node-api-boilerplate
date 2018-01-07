@@ -2,6 +2,9 @@ import path from 'path';
 import getPort from 'get-port';
 import dotenv from 'dotenv';
 import {
+  createSessionEncryptor,
+} from 'helpers/session';
+import {
   setupMongoose,
   buildAllIndexes,
 } from 'setup/mongodb';
@@ -19,6 +22,7 @@ export async function setupTestEnvironment() {
   dotenv.load({
     path: path.resolve(__dirname, '../../../.env'),
   });
+  createSessionEncryptor();
   await setupMongoose(`${process.env.MONGODB_DATABASE_NAME}_test_${port}`);
   await buildAllIndexes();
 
