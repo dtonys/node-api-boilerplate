@@ -20,9 +20,8 @@ router.get('/api/health-check', (req, res) => {
 // CRUD users
 router.post('/api/users', userController.create );
 router.patch('/api/users/:id', userController.update );
-router.put('/api/users/:id', userController.update );
 router.get('/api/users/:id', userController.get );
-router.get('/api/users', adminOnly, userController.list );
+router.get('/api/users', userController.list );
 router.delete('/api/users/:id', userController.remove );
 
 // Auth APIs

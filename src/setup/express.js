@@ -9,7 +9,7 @@ import routes from 'setup/routes';
 
 export function handleErrorMiddleware( err, req, res, next ) {
   // NOTE: Add additional handling for errors here
-  console.log(err);
+  console.log(err); // eslint-disable-line no-console
   // Pass to express' default error handler, which will return
   // `Internal Server Error` when `process.env.NODE_ENV === production` and
   // a stack trace otherwise
@@ -19,14 +19,14 @@ export function handleErrorMiddleware( err, req, res, next ) {
 function handleUncaughtErrors() {
   process.on('uncaughtException', ( error ) => {
     // NOTE: Add additional handling for uncaught exceptions here
-    console.log(error);
+    console.log(error); // eslint-disable-line no-console
     process.exit(1);
   });
   // NOTE: Treat promise rejections the same as an uncaught error,
   // as both can be invoked by a JS error
   process.on('unhandledRejection', ( error ) => {
     // NOTE: Add handling for uncaught rejections here
-    console.log(error);
+    console.log(error); // eslint-disable-line no-console
     process.exit(1);
   });
 }
@@ -56,9 +56,9 @@ export function createExpressApp() {
   return expressApp;
 }
 
-export function startExpressServer( expressApp ) {
+export function startExpressServer( expressApp, port = process.env.API_PORT ) {
   return new Promise((resolve, reject) => {
-    const listener = expressApp.listen(process.env.API_PORT, (err) => {
+    const listener = expressApp.listen(port, (err) => {
       if ( err ) {
         reject(err);
       }
