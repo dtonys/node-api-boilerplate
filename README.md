@@ -1,16 +1,20 @@
 # node-api-boilerplate
 
 ## Overview
-A modern starting point for nodeJS API backends.
+A modern, reliable, well tested starting point for nodeJS API backends.
 
 ## Features
-- Authentication, role based permissions, CRUD Users
-  - Login, Logout, Signup, Session
-  - ( Create / Update / Get / Delete / List ) ~> User
-  - Admin and logged in protected APIs.
+- Authentication
+- Role based permissions
+- CRUD Users
+- API test coverage with Jest
 
-- API testing with Jest, all API endpoints covered
-- Health Check
+## Tech
+- ESLint config from airbnb-base
+- MongoDB & Mongoose database integration
+- Custom built session management
+- Efficient reloading with babel-watch
+- Webpack and Babel to enable modern javascript
 
 ## API
 
@@ -36,3 +40,4 @@ A modern starting point for nodeJS API backends.
 | ------ | -------------- | ----- | ----- |
 | GET    | /api/member/users | | Get list of users, logged-in only |
 | GET    | /api/admin/users | | Get list of users, admin role only |
+
