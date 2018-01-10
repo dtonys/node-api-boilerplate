@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import compression from 'compression';
+import morgan from 'morgan';
 
 import routes from 'setup/routes';
 
@@ -33,37 +34,40 @@ function handleUncaughtErrors() {
 
 export function createExpressApp() {
   // express
-  const expressApp = express();
+  const app = express();
 
   // middleware
-  expressApp.use(helmet.hidePoweredBy());
-  expressApp.use(compression());
-  expressApp.use(cookieParser());
-  expressApp.use(bodyParser.json());
-  expressApp.use(bodyParser.urlencoded({ extended: true }));
+  app.use(helmet.hidePoweredBy());
+  app.use(compression());
+  app.use(cookieParser());
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  if ( process.env.NODE_ENV !== 'production' ) {
+    app.use(morgan('[:date[iso]] :method :url :status :response-time ms - :res[content-length]'));
+  }
 
   // api routes
-  expressApp.use(routes);
+  app.use(routes);
 
   // Handle errors
-  expressApp.use(handleErrorMiddleware);
+  app.use(handleErrorMiddleware);
 
   // Catch all 404
-  expressApp.all('*', (req, res) => {
+  app.all('*', (req, res) => {
     res.status(404);
     res.send('API not found.');
   });
-  return expressApp;
+  return app;
 }
 
-export function startExpressServer( expressApp, port = process.env.API_PORT ) {
+export function startExpressServer( app, port = process.env.API_PORT ) {
   return new Promise((resolve, reject) => {
-    const listener = expressApp.listen(port, (err) => {
+    const listener = app.listen(port, (err) => {
       if ( err ) {
         reject(err);
       }
       handleUncaughtErrors();
-      console.log(`API server listening on ${process.env.API_PORT} in ${expressApp.settings.env} mode.`); // eslint-disable-line no-console
+      console.log(`API server listening on ${process.env.API_PORT} in ${app.settings.env} mode.`); // eslint-disable-line no-console
       resolve(listener);
     });
   });
