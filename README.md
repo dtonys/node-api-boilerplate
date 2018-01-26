@@ -1,4 +1,4 @@
-# node-api-boilerplate
+# :white_circle: node-api-boilerplate
 
 ## Overview
 A modern, reliable, well tested starting point for nodeJS API backends.
