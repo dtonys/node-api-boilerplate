@@ -6,7 +6,7 @@
   "author": "dtonys@gmail.com <dtonys@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development babel-watch ./src/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon --delay 2 --watch src --exec babel-node ./src/server.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "start": "cross-env NODE_ENV=production forever start --uid node-api --append ./build/server.js",
     "stop": "forever stop node-api",
@@ -38,6 +38,7 @@
     "lodash": "^4.17.4",
     "mongoose": "^5.0.0-rc1",
     "morgan": "^1.9.0",
+    "nodemon": "^1.14.11",
     "simple-encryptor": "^1.1.1",
     "webpack": "^3.10.0",
     "webpack-node-externals": "^1.6.0"
@@ -45,7 +46,6 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
-    "babel-watch": "^2.0.7",
     "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-node": "^0.3.1",

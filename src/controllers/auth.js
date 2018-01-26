@@ -20,9 +20,9 @@ export async function signup( req, res, next ) {
   if ( existingUser ) {
     res.status(422);
     res.json({
-      error: [ {
+      error: {
         message: 'User email already in use',
-      } ],
+      },
     });
     return;
   }
@@ -70,9 +70,9 @@ export async function login( req, res, next ) {
       // user not found
       res.status(404);
       res.json({
-        error: [ {
+        error: {
           message: 'Email not found',
-        } ],
+        },
       });
       return;
     }
@@ -89,9 +89,9 @@ export async function login( req, res, next ) {
       // wrong password
       res.status(422);
       res.json({
-        error: [ {
+        error: {
           message: 'Wrong password',
-        } ],
+        },
       });
       return;
     }
@@ -129,7 +129,7 @@ export async function logout( req, res, next ) {
   });
 }
 
-export async function session( req, res, next ) {
+export async function session( req, res /* ,next */ ) {
   const sessionId = req.cookies[SESSION_COOKIE_NAME];
   if ( !sessionId ) {
     res.json({
@@ -144,16 +144,12 @@ export async function session( req, res, next ) {
     });
     return;
   }
-  try {
-    res.json({
-      data: {
-        currentUser,
-        currentSession,
-      },
-    });
-    return;
-  }
-  catch ( error ) {
-    next(error);
-  }
+  const _currentUser = currentUser.toObject();
+  delete _currentUser.password_hash;
+  res.json({
+    data: {
+      currentUser: _currentUser,
+      currentSession,
+    },
+  });
 }
