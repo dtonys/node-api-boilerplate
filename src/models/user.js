@@ -7,11 +7,9 @@ export const USER_ROLE_ADMIN = 'admin';
 const UserSchema = new Schema({
   email: {
     type: String,
-    // required: true,
   },
   password_hash: {
     type: String,
-    // required: true,
   },
   roles: {
     type: [ String ],

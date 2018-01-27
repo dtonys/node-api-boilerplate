@@ -7,7 +7,6 @@ import {
 } from 'helpers/session';
 
 
-// Admin only middleware
 const adminOnly = requireRoles([ 'admin' ]);
 
 const router = new Router();

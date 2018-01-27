@@ -1,24 +1,16 @@
 import path from 'path';
 import dotenv from 'dotenv';
-import {
-  createSessionEncryptor,
-} from 'helpers/session';
-
-import {
-  createExpressApp,
-  startExpressServer,
-} from 'setup/express';
-import {
-  setupMongoose,
-} from 'setup/mongodb';
 
 
 async function bootstrap() {
-  // load env
+  // load envs
   dotenv.load({
     path: path.resolve(__dirname, '../.env'),
   });
-  createSessionEncryptor();
+
+  // NOTE: Require env dependent files after envs are set
+  const { createExpressApp, startExpressServer } = require('setup/express');
+  const { setupMongoose } = require('setup/mongodb');
 
   // setup mongodb
   await setupMongoose( process.env.MONGODB_DATABASE_NAME );

@@ -1,19 +1,7 @@
 import path from 'path';
 import getPort from 'get-port';
 import dotenv from 'dotenv';
-import {
-  createSessionEncryptor,
-} from 'helpers/session';
-import {
-  setupMongoose,
-  buildAllIndexes,
-} from 'setup/mongodb';
-
 import mongoose from 'mongoose';
-import {
-  createExpressApp,
-  startExpressServer,
-} from 'setup/express';
 
 
 let _server = null;
@@ -22,7 +10,11 @@ export async function setupTestEnvironment() {
   dotenv.load({
     path: path.resolve(__dirname, '../../../.env'),
   });
-  createSessionEncryptor();
+
+  // NOTE: Require env dependent files after envs are set
+  const { createExpressApp, startExpressServer } = require('setup/express');
+  const { setupMongoose, buildAllIndexes } = require('setup/mongodb');
+
   await setupMongoose(`${process.env.MONGODB_DATABASE_NAME}_test_${port}`);
   await buildAllIndexes();
 

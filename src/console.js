@@ -3,13 +3,6 @@ import repl from 'repl';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-import {
-  createSessionEncryptor,
-} from 'helpers/session';
-import {
-  setupMongoose,
-} from 'setup/mongodb';
-
 
 // Forces a hard re-require of a module
 function requireUncached(module) {
@@ -18,7 +11,7 @@ function requireUncached(module) {
 }
 
 // Reload the repl to allow code changes to propagate, without killing the process.
-async function reloadRepl( replServer ) {
+async function reloadRepl( replServer, setupMongoose ) {
   console.log('Reloading...'); // eslint-disable-line no-console
 
   await replServer.context.mongoose.disconnect();
@@ -38,7 +31,9 @@ async function bootstrap() {
   dotenv.load({
     path: path.resolve(__dirname, '../.env'),
   });
-  createSessionEncryptor();
+
+  // NOTE: Require env dependent files after envs are set
+  const setupMongoose = require('setup/mongodb');
 
   // setup mongodb
   await setupMongoose( process.env.MONGODB_DATABASE_NAME );
@@ -53,7 +48,7 @@ async function bootstrap() {
   Object.keys(db.models).forEach(( modelName ) => {
     replServer.context[modelName] = db.models[modelName];
   });
-  replServer.context.reload = reloadRepl.bind( null, replServer );
+  replServer.context.reload = reloadRepl.bind( null, replServer, setupMongoose );
 }
 
 bootstrap()

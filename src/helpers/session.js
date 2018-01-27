@@ -8,14 +8,7 @@ import Session, {
 import User from 'models/user';
 
 
-let encryptor = null;
-// NOTE: Due to the startup process with `babel-watch`, `process.env.ENCRYPTION_SECRET` is not loaded at startup,
-// so the encryptor must be invoked later
-export function createSessionEncryptor() {
-  encryptor = createEncryptor( process.env.ENCRYPTION_SECRET );
-}
-
-
+const encryptor = createEncryptor( process.env.ENCRYPTION_SECRET );
 export async function getCurrentSessionAndUser( sessionId ) {
   if ( !sessionId ) {
     return { user: null, session: null };
@@ -54,7 +47,7 @@ export async function createSessionWithCookie( userId, res ) {
     SESSION_COOKIE_NAME,
     createdSession._id,
     {
-      httpOnly: true, // Prevent client side javascript from reading cookie
+      httpOnly: true, // Prevent client side javascript from stealing session token
       maxAge: 1000 * SESSION_DURATION_SECONDS,
     }
   );
