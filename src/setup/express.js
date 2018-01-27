@@ -42,9 +42,7 @@ export function createExpressApp() {
   app.use(cookieParser());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
-  if ( process.env.NODE_ENV !== 'production' ) {
-    app.use(morgan('[:date[iso]] :method :url :status :response-time ms - :res[content-length]'));
-  }
+  app.use(morgan('[:date[iso]] :method :url :status :response-time ms - :res[content-length]'));
 
   // api routes
   app.use(routes);
