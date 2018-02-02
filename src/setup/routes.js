@@ -15,9 +15,6 @@ const router = new Router();
 router.get('/', (req, res) => {
   res.send('ok');
 });
-router.get('/api/health-check', (req, res) => {
-  res.send('ok');
-});
 
 // CRUD users
 router.post('/api/users', userController.create );
@@ -32,9 +29,8 @@ router.post('/api/login', authController.login );
 router.get('/api/logout', authController.logout );
 router.get('/api/session', authController.session );
 
-// Admin only
+// Protected APIs
 router.get('/api/admin/users', adminOnly, userController.list );
-// Logged in only
 router.get('/api/member/users', loggedInOnly, userController.list );
 
 export default router;
