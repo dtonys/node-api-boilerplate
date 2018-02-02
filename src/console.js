@@ -33,7 +33,7 @@ async function bootstrap() {
   });
 
   // NOTE: Require env dependent files after envs are set
-  const setupMongoose = require('setup/mongodb');
+  const { setupMongoose } = require('setup/mongodb');
 
   // setup mongodb
   await setupMongoose( process.env.MONGODB_DATABASE_NAME );
