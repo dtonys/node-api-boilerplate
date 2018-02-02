@@ -11,7 +11,7 @@ const PATHS = {
   build: path.resolve(__dirname, 'build'),
 };
 
-module.exports = ( /* env */ ) => {
+module.exports = () => {
   return {
     target: 'node',
     devtool: 'source-map',
@@ -45,10 +45,6 @@ module.exports = ( /* env */ ) => {
     },
     module: {
       rules: [
-        {
-          test: /\.json$/,
-          loader: 'json-loader',
-        },
         {
           test: /\.js$/,
           loader: 'babel-loader',
