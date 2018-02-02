@@ -6,6 +6,7 @@ import Session, {
   SESSION_DURATION_SECONDS,
 } from 'models/session';
 import User from 'models/user';
+import { handleAsyncError } from 'helpers/express';
 
 
 const encryptor = createEncryptor( process.env.ENCRYPTION_SECRET );
@@ -66,7 +67,7 @@ export async function loggedInOnly( req, res, next ) {
 }
 
 export function requireRoles( roles ) {
-  return async function requireRolesMiddleware( req, res, next ) {
+  async function requireRolesMiddleware( req, res, next ) {
     const { currentUser } = await getCurrentSessionAndUser( req.cookies[SESSION_COOKIE_NAME] );
     const userRoles = lodashGet( currentUser, 'roles' );
     const hasRequiredRoles = userRoles && lodashDifference(roles, userRoles).length === 0;
@@ -78,5 +79,6 @@ export function requireRoles( roles ) {
     res.json({
       error: 'Unauthorized access',
     });
-  };
+  }
+  return handleAsyncError(requireRolesMiddleware);
 }

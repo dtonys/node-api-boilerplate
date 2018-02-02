@@ -22,5 +22,6 @@ async function bootstrap() {
 
 bootstrap()
   .catch((error) => {
+    console.log('bootstrap error'); // eslint-disable-line no-console
     console.log(error); // eslint-disable-line no-console
   });

@@ -8,8 +8,9 @@ import morgan from 'morgan';
 import routes from 'setup/routes';
 
 
-export function handleErrorMiddleware( err, req, res, next ) {
-  // NOTE: Add additional handling for errors here
+function handleErrorMiddleware( err, req, res, next ) {
+  // NOTE: Add additional error processing here
+  console.log('handleErrorMiddleware'); // eslint-disable-line no-console
   console.log(err); // eslint-disable-line no-console
   // Pass to express' default error handler, which will return
   // `Internal Server Error` when `process.env.NODE_ENV === production` and
@@ -19,14 +20,16 @@ export function handleErrorMiddleware( err, req, res, next ) {
 
 function handleUncaughtErrors() {
   process.on('uncaughtException', ( error ) => {
-    // NOTE: Add additional handling for uncaught exceptions here
+    // NOTE: Add additional error processing here
+    console.log('uncaughtException'); // eslint-disable-line no-console
     console.log(error); // eslint-disable-line no-console
     process.exit(1);
   });
   // NOTE: Treat promise rejections the same as an uncaught error,
   // as both can be invoked by a JS error
   process.on('unhandledRejection', ( error ) => {
-    // NOTE: Add handling for uncaught rejections here
+    // NOTE: Add additional error processing here
+    console.log('unhandledRejection'); // eslint-disable-line no-console
     console.log(error); // eslint-disable-line no-console
     process.exit(1);
   });

@@ -1,73 +1,49 @@
 import User from 'models/user';
+import { handleAsyncError } from 'helpers/express';
 
 
-export async function create( req, res, next ) {
+export const create = handleAsyncError( async ( req, res ) => {
   const payload = req.body;
-  try {
-    const user = await User.create(payload);
-    res.json({
-      data: user,
-    });
-  }
-  catch (error) {
-    next(error);
-  }
-}
+  const user = await User.create(payload);
+  res.json({
+    data: user,
+  });
+});
 
-export async function update( req, res, next ) {
+export const update = handleAsyncError( async ( req, res ) => {
   const payload = req.body;
   const { id } = req.params;
-  try {
-    await User.update(
-      { _id: id },
-      payload,
-    );
-    const updatedUser = await User.findById(id);
-    res.json({
-      data: updatedUser,
-    });
-  }
-  catch (error) {
-    next(error);
-  }
-}
+  await User.update(
+    { _id: id },
+    payload,
+  );
+  const updatedUser = await User.findById(id);
+  res.json({
+    data: updatedUser,
+  });
+});
 
-export async function get( req, res, next ) {
+export const get = handleAsyncError( async ( req, res ) => {
   const { id } = req.params;
-  try {
-    const user = await User.findById(id);
-    res.json({
-      data: user,
-    });
-  }
-  catch (error) {
-    next(error);
-  }
-}
+  const user = await User.findById(id);
+  res.json({
+    data: user,
+  });
+});
 
-export async function list( req, res, next ) {
-  try {
-    const users = await User.find();
-    res.json({
-      data: {
-        items: users,
-      },
-    });
-  }
-  catch (error) {
-    next(error);
-  }
-}
+export const list = handleAsyncError( async ( req, res ) => {
+  const users = await User.find();
+  res.json({
+    data: {
+      items: users,
+    },
+  });
+});
 
-export async function remove( req, res, next ) {
+export const remove = handleAsyncError( async ( req, res ) => {
   const { id } = req.params;
-  try {
-    const deletedUser = await User.findOneAndRemove({ _id: id });
-    res.json({
-      data: deletedUser,
-    });
-  }
-  catch (error) {
-    next(error);
-  }
-}
+  const deletedUser = await User.findOneAndRemove({ _id: id });
+  res.json({
+    data: deletedUser,
+  });
+});
