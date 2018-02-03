@@ -4,6 +4,8 @@
 
 A modern nodejs API boilerplate, built on top of Express + MongoDB.
 
+See [API](https://github.com/dtonys/node-api-boilerplate#api) for concrete list of features.
+
 Use with [universal-web-boilerplate](https://github.com/dtonys/universal-web-boilerplate) to create web apps.
 
 ## Philosophy
@@ -48,11 +50,11 @@ Node API Boilerplate leverages the power of modern javascript syntax and tooling
 
 `yarn`
 
-#### Download MongoDB and start it on the default port (27017)
+#### Download MongoDB and start on the default port (27017)
 
 https://treehouse.github.io/installation-guides/mac/mongo-mac.html
 
-#### Create a `.env` file with values below, and add it to the project root
+#### Create a `.env` file with values below, and add to the project root
 NOTE: Substitute your own values as needed
 ```
 API_PORT=3020
