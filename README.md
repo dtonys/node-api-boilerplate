@@ -8,7 +8,7 @@ See [API Docs](https://github.com/dtonys/node-api-boilerplate#api) for concrete 
 
 **Examples**:
   - [health check](http://api.universalboilerplate.com/)
-  - [user list](http://api.universalboilerplate.com/api/users)
+  - [user detail](http://api.universalboilerplate.com/api/users/5a6c9bf7804ca264a44e6627)
 
 Use with [universal-web-boilerplate](https://github.com/dtonys/universal-web-boilerplate) to create web apps.
 
@@ -62,7 +62,7 @@ https://treehouse.github.io/installation-guides/mac/mongo-mac.html
 NOTE: Substitute your own values as needed
 ```
 API_PORT=3020
-ENCRYPTION_SECRET=ZY6hYIkebSBVrpHgFRVWrResxUyM1jPQ
+ENCRYPTION_SECRET=<SECRET_CODE>
 
 MONGODB_DATABASE_NAME=auth_app
 MONGODB_CONNECTION_URL=mongodb://localhost
