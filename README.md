@@ -6,7 +6,9 @@ A modern nodejs API boilerplate, built on top of Express + MongoDB.
 
 See [API Docs](https://github.com/dtonys/node-api-boilerplate#api) for concrete list of features.
 
-Send requests to the live api endpoint at http://api.universalboilerplate.com.
+Take a look at some live API endpoints here:
+  - [health check](http://api.universalboilerplate.com/)
+  - [user list](http://api.universalboilerplate.com/api/users)
 
 Use with [universal-web-boilerplate](https://github.com/dtonys/universal-web-boilerplate) to create web apps.
 
