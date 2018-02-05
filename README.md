@@ -16,7 +16,7 @@ Node API Boilerplate provides a starting point for creating a backend web servic
 
 ## Usage with web server
 
-This server is designed to be used as an API backend for a web or mobible service, and expects to be consumed by another process.
+This server is designed to be used as an API backend for a web or mobile service, and expects to be consumed by another process.
 
 This decoupled approach ( as opposed to a monolithic approach where an API and web server live on the same process ) makes both the web and api service easier to organize, and provides a more scalable and performent architecture.
 
