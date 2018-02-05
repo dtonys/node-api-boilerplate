@@ -12,33 +12,25 @@ See [API Docs](https://github.com/dtonys/node-api-boilerplate#api) for functiona
 
 ## Motivation
 
-Node API Boilerplate leverages the power of modern javascript syntax and tooling to provide a clean, productive development environment.
-
-This opinionated yet configurable boilerplate provides more control compared to "zero-configuration" tools that hide implementation details and often lock you into their way of doing things.
+Node API Boilerplate provides a starting point for creating a backend web service with nodejs, utilizing modern javascript tools and standards.
 
 ## Usage with web server
 
-Your web server and API server should be in separate codebases, running on separate processes.
+This server is designed to be used as an API backend for a web or mobible service, and expects to be consumed by another process.
 
-This decoupled approach ( as opposed to a monolithic approach like Ruby on Rails ) makes both the web and api service easier to organize, and provides a more scalable and performent architecture.
+This decoupled approach ( as opposed to a monolithic approach where an API and web server live on the same process ) makes both the web and api service easier to organize, and provides a more scalable and performent architecture.
 
-Use this in conjunction with [universal-web-boilerplate](https://github.com/dtonys/universal-web-boilerplate) to create universal, code split web apps.
-
-For universal apps, the recommended approach is to use an API proxy to provide consistent API access to both the server and client:
-
-https://github.com/dtonys/universal-web-boilerplate/blob/17282368130c1e5caf9c829ce5e3fd5bcc1f441e/src/server/server.js#L172
-
-https://github.com/dtonys/universal-web-boilerplate/blob/17282368130c1e5caf9c829ce5e3fd5bcc1f441e/src/server/apiProxy.js
+See [universal-web-boilerplate](https://github.com/dtonys/universal-web-boilerplate) to create universal, code split web apps.
 
 ## Featuring
 
-#### Webpack to compile modern javascript
+#### Webpack to compile modern javascript in a node environment
   - async / await to simplify async control flow and error handling
-  - import / export to enable modular javascript
+  - import / export to enable javsascript modules
 
 #### Jest for a fast and pleasant testing experience
   - API integration tests run in parallel, each test connecting to a separate database instance.
-  - Code coverage and watch mode out of the box
+  - Code coverage and watch mode supported by jest out of the box
 
 #### ESLint based on `eslint-config-airbnb` for fine grained control of code syntax and quality
   - Configured for a nodejs environment
@@ -57,11 +49,11 @@ https://github.com/dtonys/universal-web-boilerplate/blob/17282368130c1e5caf9c829
 
 `yarn`
 
-#### Download MongoDB and start on the default port (27017)
+#### Download MongoDB and run a local instance on the default port (27017)
 
 https://treehouse.github.io/installation-guides/mac/mongo-mac.html
 
-#### Create a `.env` file with values below, and add to the project root
+#### Create a `.env` file with values below, in project's root
 NOTE: Substitute your own values as needed
 ```
 API_PORT=3020
