@@ -2,7 +2,6 @@
 // https://github.com/jaredpalmer/backpack/blob/6b448c43831e1afa40962aa24c81c2b209134ef3/packages/backpack-core/config/webpack.config.js
 
 const path = require('path');
-
 const nodeExternals = require('webpack-node-externals');
 
 
@@ -13,8 +12,9 @@ const PATHS = {
 
 module.exports = () => {
   return {
+    // NOTE: Using production mode includes `UglifyJsPlugin`, which breaks async functions.
+    mode: 'none',
     target: 'node',
-    devtool: 'source-map',
     // exclude node_modules from bundling, except for asset resources
     externals: nodeExternals({
       whitelist: [
