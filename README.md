@@ -23,7 +23,7 @@ This decoupled approach ( as opposed to a monolithic approach where an API and w
 See [universal-web-boilerplate](https://github.com/dtonys/universal-web-boilerplate) to create universal, code split web apps.
 
 ## Updates
-**5/21/2018** - Updated all npm dependencies to latest version.
+**5/21/2018** - Updated all npm dependencies to latest version. Update to webpack 4.
 
 
 ## Featuring
